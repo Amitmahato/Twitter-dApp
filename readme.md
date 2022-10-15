@@ -1,5 +1,7 @@
 # Course overview
+
 We are building a Twitter dApp today. The app will have the following functionality.
+
 1. Sign-in via Twitter using Web3Auth
 2. Write a tweet as NFT
 3. Upvote and Comment on a tweet
@@ -7,6 +9,7 @@ We are building a Twitter dApp today. The app will have the following functional
 5. Interoperability of the DApp with Torus Wallet and Wallet Connect
 
 This will be a very informative course on how to deploy an end to end application from scratch!There are 3 main modules to any E2E Application
+
 - Smart Contracts
 - Backend
 - Frontend
@@ -14,6 +17,7 @@ This will be a very informative course on how to deploy an end to end applicatio
 Ours will be a web3 centric course where we will spend most of our time exploring all of the web3 aspects of the DApp.This will majorly fall under the Smart Contract & The Backend section.We will try to keep our discussion about the frontend brief, and focused on the web3 integration.
 
 # Skills you will learn
+
 1. Social Login functionality by Web3Auth
 2. Using Quicknode RPC . As the name implies, they are quick and easy to set up, and support newer Testnets like Goerli and Mumbai.
 3. Writing smart contracts in solidity
@@ -24,6 +28,12 @@ Ours will be a web3 centric course where we will spend most of our time explorin
 8. Integrating with Torus Wallet
 9. Building End To End Applications
 10. Using Remix IDE
+
+# Solutions to different issues face during development
+
+## Web3Auth & Autj0 integration
+
+[Reference](https://web3auth.io/docs/guides/auth0#setup-your-auth0-tenant)
 
 # Getting Started with Create React App
 

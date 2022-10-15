@@ -88,7 +88,7 @@ function App() {
                 jwt: {
                   name: "Custom Auth Login",
                   verifier, // Please create a verifier on the developer dashboard and pass the name here
-                  typeOfLogin: "twitter", // Pass on the login provider of the verifier you've created
+                  typeOfLogin: "jwt", // Pass on the login provider of the verifier you've created
                   clientId: APP_CONSTANTS.ADAPTER_TWITTER_CLIENT_ID, // Pass on the clientId of the login provider here - Please note this differs from the Web3Auth ClientID. This is the JWT Client ID
                 }, // Add other login providers here
               },
@@ -113,38 +113,10 @@ function App() {
           await web3auth.addPlugin(torusPlugin);
           setTorusPlugin(torusPlugin);
 
-          await web3auth.configureAdapter(openloginAdapter);
-          setWeb3auth(web3auth);
-
+          web3auth.configureAdapter(openloginAdapter);
           await web3auth.init();
 
-          if (web3auth.provider) {
-            await setProvider(web3auth.provider);
-
-            let user = await web3auth.getUserInfo();
-
-            console.log("user ", user);
-
-            if (
-              user.name &&
-              user.name !== null &&
-              user.name !== " " &&
-              user.name !== ""
-            ) {
-              setUserName(user.name);
-            }
-
-            if (
-              user.profileImage &&
-              user.profileImage !== null &&
-              user.profileImage !== " " &&
-              user.profileImage !== ""
-            ) {
-              setProfileImage(user.profileImage);
-            }
-          }
-
-          await fetchAllTweets();
+          setWeb3auth(web3auth);
         } catch (error) {
           console.error(error);
         }
@@ -152,7 +124,42 @@ function App() {
 
       init();
     }
-  }, [fetchAllTweets]);
+  }, []);
+
+  useEffect(() => {
+    if (web3auth) {
+      (async () => {
+        if (web3auth.provider) {
+          setProvider(web3auth.provider);
+          let user = await web3auth.getUserInfo();
+
+          console.log("user ", user);
+
+          if (
+            user.name &&
+            user.name !== null &&
+            user.name !== " " &&
+            user.name !== ""
+          ) {
+            setUserName(user.name);
+          }
+
+          if (
+            user.profileImage &&
+            user.profileImage !== null &&
+            user.profileImage !== " " &&
+            user.profileImage !== ""
+          ) {
+            setProfileImage(user.profileImage);
+          }
+
+          setInterval(async () => {
+            await fetchAllTweets();
+          }, refreshTime);
+        }
+      })();
+    }
+  }, [fetchAllTweets, refreshTime, web3auth]);
 
   const logout = async () => {
     if (!web3auth) {
@@ -481,8 +488,11 @@ function App() {
       )}{" "}
            
       <ToastContainer />
-         
-    </div> // <div className="grid">{provider //   ? loggedInView //   : unloggedInView}</div> // {/* <div className="grid">{loggedInView}</div> */}
+      {/* <div>
+        <div className="grid">{provider ? loggedInView : unloggedInView}</div>
+        <div className="grid">{loggedInView}</div>
+      </div> */}
+    </div>
   );
 }
 
