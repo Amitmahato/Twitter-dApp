@@ -13,6 +13,18 @@ This will be a very informative course on how to deploy an end to end applicatio
 
 Ours will be a web3 centric course where we will spend most of our time exploring all of the web3 aspects of the DApp.This will majorly fall under the Smart Contract & The Backend section.We will try to keep our discussion about the frontend brief, and focused on the web3 integration.
 
+# Skills you will learn
+1. Social Login functionality by Web3Auth
+2. Using Quicknode RPC . As the name implies, they are quick and easy to set up, and support newer Testnets like Goerli and Mumbai.
+3. Writing smart contracts in solidity
+4. Minting NFTs using ERC 721
+5. Integrating with the OpenSea platform
+6. Using OpenZeppelin libraries to make our life easier
+7. Utilizing the power of React to build our very own frontend similar to Twitter’s homepage
+8. Integrating with Torus Wallet
+9. Building End To End Applications
+10. Using Remix IDE
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
