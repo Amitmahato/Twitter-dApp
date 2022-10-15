@@ -4,6 +4,7 @@ import "./App.css";
 import { Web3AuthCore } from "@web3auth/core";
 import { CHAIN_NAMESPACES } from "@web3auth/base";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
+import { TorusWalletConnectorPlugin } from "@web3auth/torus-wallet-connector-plugin";
 
 const clientId = process.env.REACT_APP_WEB3_AUTH_CLIENT_ID || "";
 
@@ -41,6 +42,22 @@ const openloginAdapter = new OpenloginAdapter({
 });
 
 web3auth.configureAdapter(openloginAdapter);
+
+const torusPlugin = new TorusWalletConnectorPlugin({
+  torusWalletOpts: {},
+  walletInitOptions: {
+    whiteLabel: {
+      theme: { isDark: true, colors: { primary: "#00a8ff" } },
+      logoDark: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
+      logoLight: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
+    },
+    useWalletConnect: true,
+    enableLogging: true,
+  },
+});
+
+web3auth.addPlugin(torusPlugin);
+
 web3auth.init();
 
 function App() {
