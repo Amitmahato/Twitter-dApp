@@ -51,13 +51,15 @@ contract TwitterDapp is ERC721("TwitterDApp", "TDAPP") {
         _safeMint(msg.sender, tokenId);
 
         // build a tweet from provided data
-        tweet memory _tweet;
-        _tweet.name = name;
-        _tweet.description = description;
-        _tweet.fromAddress = msg.sender;
-
-        // add to the tweets array
-        tweets[tokenId] = _tweet;
+        tweets.push(
+            tweet({
+                name: name,
+                description: description,
+                upvotes: 0,
+                comments: new string[](0),
+                fromAddress: msg.sender
+            })
+        );
 
         tokenId += 1;
     }
@@ -70,9 +72,9 @@ contract TwitterDapp is ERC721("TwitterDApp", "TDAPP") {
         tweets[tweetIndex].upvotes += 1;
     }
 
-    function getAllTweets() public returns (tweet[] memory) {
+    function getAllTweets() public view returns (tweet[] memory) {
         return tweets;
     }
 }
 
-// Deployed Contract Address on Polygon Mumbai Network - 0x4D6545946D646aC6c30878192bbB6D759598f3E6
+// Deployed Contract Address on Polygon Mumbai Network - 0x46653e9070a6dec0FD36ac557320ae8580DC016E

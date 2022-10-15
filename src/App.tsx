@@ -132,7 +132,6 @@ function App() {
         if (web3auth.provider) {
           setProvider(web3auth.provider);
           let user = await web3auth.getUserInfo();
-
           console.log("user ", user);
 
           if (
@@ -254,7 +253,7 @@ function App() {
     }
   };
 
-  const addNewTweet = (e: any) => {
+  const addNewTweet = async (e: any) => {
     e.preventDefault();
     if (!provider) {
       console.log("provider not initialized yet");
@@ -264,15 +263,11 @@ function App() {
     try {
       const rpc = new RPC(provider);
 
+      await rpc.sendWriteTweetTransaction(newTweetName, newTweetDescription);
+
       toast.success("Tweet added successfully", {
         position: toast.POSITION.TOP_CENTER,
       });
-
-      rpc.sendWriteTweetTransaction(newTweetName, newTweetDescription);
-
-      setTimeout(function () {
-        fetchAllTweets();
-      }, refreshTime);
 
       fetchAllTweets();
     } catch (error) {
