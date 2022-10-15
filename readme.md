@@ -1,3 +1,18 @@
+# Course overview
+We are building a Twitter dApp today. The app will have the following functionality.
+1. Sign-in via Twitter using Web3Auth
+2. Write a tweet as NFT
+3. Upvote and Comment on a tweet
+4. Buy a tweet on OpenSea.
+5. Interoperability of the DApp with Torus Wallet and Wallet Connect
+
+This will be a very informative course on how to deploy an end to end application from scratch!There are 3 main modules to any E2E Application
+- Smart Contracts
+- Backend
+- Frontend
+
+Ours will be a web3 centric course where we will spend most of our time exploring all of the web3 aspects of the DApp.This will majorly fall under the Smart Contract & The Backend section.We will try to keep our discussion about the frontend brief, and focused on the web3 integration.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
